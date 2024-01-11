@@ -64,7 +64,6 @@ const RetirementCalculator = () => {
     const newData = [];
     for (let age = currentAge; age <= lifeExpectancy; age++) {
       // Calculate yearlySavingsIncrement, returnsOnInvestment, and corpus for each age
-      const yearsUntilRetirement = Math.max(retirementAge - age, 0);
 
       corpus =
         corpus +
@@ -88,7 +87,7 @@ const RetirementCalculator = () => {
         updatedPostRetirementMonthlyIncome =
           (1 + inflationRate / 100) * updatedPostRetirementMonthlyIncome;
         withdrawals = 12 * updatedPostRetirementMonthlyIncome;
-      } else if (age == retirementAge) {
+      } else if (age === retirementAge) {
         withdrawals = updatedPostRetirementMonthlyIncome * 12;
       } else {
         withdrawals = 0;
