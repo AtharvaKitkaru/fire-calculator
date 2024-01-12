@@ -1,18 +1,78 @@
 .calculator {
-    width: 100vw;
-    border: 1px;
-    font-family: "Noto Sans", sans-serif;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
+  width: 100vw;
+  font-family: "Noto Sans", sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin: 0;
+  padding: 2rem;
+}
+.body{
+  display: flex;
+  flex-direction: row;
+
+}
+.input-section {
+  border: 0.5px solid rgba(128, 128, 128, 0.196);
+  border-radius: 0.8rem;
+  padding: 1rem;
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  flex:0.6
+}
+.table-section{
+  flex: 1;
+}
+.input-line {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem; /* Add margin between each input-line */
+  width: 100%; /* Ensure the input line takes the full width of its container */
+}
+
+
+input {
+  flex: 1; /* Allow the input to take up remaining space */
+  width: 5rem;
+  color: var(--green-500);
+  background-color: var(--green-100);
+  border: none;
+  border-radius: 0.3rem;
+  padding: 0.5rem;
+
+  &:focus{
+    outline: none;
   }
 
-  input {
-    width: 5rem;
-    color: var(--green-500);
-    background-color: var(--green-100);
-    border: none;
-    border-radius: 0.3rem;
-    padding: 0.5rem;
-    margin: 0.7rem;
+  /* Chrome, Safari, Edge, Opera */
+  &::-webkit-outer-spin-button,&::-webkit-inner-spin-button{
+    -webkit-appearance: none;
+    margin: 0;
   }
+
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+button{
+background-color: var(--green-500);
+color: white;
+border: none;
+border-radius: 0.25rem;
+padding: 0.5rem;
+font-size: medium;
+
+&:hover{
+  filter: brightness(0.92);
+  cursor: pointer;
+}
+}
+
