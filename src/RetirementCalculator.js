@@ -253,14 +253,22 @@ const RetirementCalculator = () => {
               <tr>
                 <th>Age</th>
                 <th>Corpus</th>
-                <th>yearlySavingsIncrement in Investment</th>
-                <th>returnsOnInvestment</th>
-                <th>Withdrawals During the Year</th>
+                <th>Increase in yearly Investment</th>
+                <th>Returns on Investment</th>
+                <th>Amount Withdrawn per annum</th>
               </tr>
             </thead>
             <tbody>
               {simulationData.map((data) => (
-                <tr key={data.age}>
+                <tr
+                  key={data.age}
+                  style={{
+                    color:
+                      data.corpus > -0.001
+                        ? "var(--green-500)"
+                        : "var(--red500)",
+                  }}
+                >
                   <td>{data.age}</td>
                   <td>₹ {formatNumber(data.corpus)}</td>
                   <td>₹ {formatNumber(data.yearlySavingsIncrement)}</td>
