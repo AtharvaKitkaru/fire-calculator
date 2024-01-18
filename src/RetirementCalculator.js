@@ -117,123 +117,161 @@ const RetirementCalculator = () => {
 
   return (
     <div className="calculator">
-      <h3>Retirement Calculator</h3>
-      <label>
-        Current Age
-        <input
-          type="number"
-          value={currentAge}
-          onChange={(e) => setCurrentAge(Number(e.target.value))}
-        />
-      </label>
-      <br />
-      <label>
-        Retirement Age
-        <input
-          type="number"
-          value={retirementAge}
-          onChange={(e) => setRetirementAge(Number(e.target.value))}
-        />
-      </label>
-      <br />
-      <label>
-        Expect to Live Until
-        <input
-          type="number"
-          value={lifeExpectancy}
-          onChange={(e) => setLifeExpectancy(Number(e.target.value))}
-        />
-      </label>
-      <br />
-      <label>
-        Current Investment
-        <input
-          type="number"
-          value={currentInvestmentCorpus}
-          onChange={(e) => setCurrentInvestmentCorpus(Number(e.target.value))}
-        />
-      </label>
-      <label>
-        Monthly Investment
-        <input
-          type="number"
-          value={monthlyInvestment}
-          onChange={(e) => setMonthlyInvestment(Number(e.target.value))}
-        />
-      </label>
-      <br />
-      <label>
-        Increase in Savings (%)
-        <input
-          type="number"
-          value={annualIncreaseInSavings}
-          onChange={(e) => setAnnualIncreaseInSavings(Number(e.target.value))}
-        />
-      </label>
-      <br />
-      <label>
-        CAGR (Annual Expected Returns on Investment %)
-        <input
-          type="number"
-          value={growthRate}
-          onChange={(e) => setGrowthRate(Number(e.target.value))}
-        />
-      </label>
-      <br />
-      <label>
-        Capital Gain Tax
-        <input
-          type="number"
-          value={capitalGainTax}
-          onChange={(e) => setCapitalGainTax(Number(e.target.value))}
-        />
-      </label>
-      <br />
-      <label>
-        Post Retirement Income
-        <input
-          type="number"
-          value={postRetirementMonthlyIncome}
-          onChange={(e) =>
-            setPostRetirementMonthlyIncome(Number(e.target.value))
-          }
-        />
-      </label>
-      <br />
-      <label>
-        Inflation Rate
-        <input
-          type="number"
-          value={inflationRate}
-          onChange={(e) => setInflationRate(Number(e.target.value))}
-        />
-      </label>
-      <br />
-      <button onClick={calculateRetirement}>Calculate</button>
+      <div className="heading-section">
+        <h3>Retirement Calculator</h3>
+      </div>
+      <div className="body">
+        <div className="input-section">
+          <div className="input-line">
+            <div>Current Age</div>
+            <div>
+              <input
+                type="number"
+                value={currentAge}
+                onChange={(e) => setCurrentAge(Number(e.target.value))}
+              />
+            </div>
+          </div>
+          <br />
+          <div className="input-line">
+            <div>Retirement Age</div>
+            <div>
+              <input
+                type="number"
+                value={retirementAge}
+                onChange={(e) => setRetirementAge(Number(e.target.value))}
+              />
+            </div>
+          </div>
+          <br />
+          <div className="input-line">
+            <div>Expect to Live Until</div>
+            <div>
+              <input
+                type="number"
+                value={lifeExpectancy}
+                onChange={(e) => setLifeExpectancy(Number(e.target.value))}
+              />
+            </div>
+          </div>
+          <br />
+          <div className="input-line">
+            {" "}
+            <div>Current Investment</div>
+            <div>
+              <input
+                type="number"
+                value={currentInvestmentCorpus}
+                onChange={(e) =>
+                  setCurrentInvestmentCorpus(Number(e.target.value))
+                }
+              />
+            </div>
+          </div>{" "}
+          <br />
+          <div className="input-line">
+            {" "}
+            <div>Monthly Investment</div>
+            <div>
+              <input
+                type="number"
+                value={monthlyInvestment}
+                onChange={(e) => setMonthlyInvestment(Number(e.target.value))}
+              />
+            </div>
+          </div>
+          <br />
+          <div className="input-line">
+            <div>Increase in Savings (%)</div>
+            <div>
+              <input
+                type="number"
+                value={annualIncreaseInSavings}
+                onChange={(e) =>
+                  setAnnualIncreaseInSavings(Number(e.target.value))
+                }
+              />
+            </div>
+          </div>
+          <br />
+          <div className="input-line">
+            {" "}
+            <div>Annual Returns on Investment (%)</div>
+            <div>
+              <input
+                type="number"
+                value={growthRate}
+                onChange={(e) => setGrowthRate(Number(e.target.value))}
+              />
+            </div>
+          </div>
+          <br />
+          <div className="input-line">
+            {" "}
+            <div>Capital Gain Tax</div>
+            <div>
+              <input
+                type="number"
+                value={capitalGainTax}
+                onChange={(e) => setCapitalGainTax(Number(e.target.value))}
+              />
+            </div>
+          </div>{" "}
+          <br />
+          <div className="input-line">
+            {" "}
+            <div>Post Retirement Income</div>{" "}
+            <div>
+              <input
+                type="number"
+                value={postRetirementMonthlyIncome}
+                onChange={(e) =>
+                  setPostRetirementMonthlyIncome(Number(e.target.value))
+                }
+              />
+            </div>
+          </div>
+          <br />
+          <div className="input-line">
+            <div>Inflation Rate</div>{" "}
+            <div>
+              <input
+                type="number"
+                value={inflationRate}
+                onChange={(e) => setInflationRate(Number(e.target.value))}
+              />
+            </div>
+          </div>
+          <br />
+          <button onClick={calculateRetirement}>Calculate</button>
+        </div>
 
-      {/* Display the simulation table */}
-      <table>
-        <thead>
-          <tr>
-            <th>Age</th>
-            <th>Corpus</th>
-            <th>yearlySavingsIncrement in Investment</th>
-            <th>returnsOnInvestment</th>
-            <th>Withdrawals During the Year</th>
-          </tr>
-        </thead>
-        <tbody>
-          {simulationData.map((data) => (
-            <tr key={data.age}>
-              <td>{data.age}</td>
-              <td>₹ {formatNumber(data.corpus)}</td>
-              <td>₹ {formatNumber(data.yearlySavingsIncrement)}</td>
-              <td>₹ {formatNumber(data.returnsOnInvestment)}</td>
-              <td>₹ {formatNumber(data.withdrawals)}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+        {/* Display the simulation table */}
+        <div className="table-section">
+          <table>
+            <thead>
+              <tr>
+                <th>Age</th>
+                <th>Corpus</th>
+                <th>yearlySavingsIncrement in Investment</th>
+                <th>returnsOnInvestment</th>
+                <th>Withdrawals During the Year</th>
+              </tr>
+            </thead>
+            <tbody>
+              {simulationData.map((data) => (
+                <tr key={data.age}>
+                  <td>{data.age}</td>
+                  <td>₹ {formatNumber(data.corpus)}</td>
+                  <td>₹ {formatNumber(data.yearlySavingsIncrement)}</td>
+                  <td>₹ {formatNumber(data.returnsOnInvestment)}</td>
+                  <td>₹ {formatNumber(data.withdrawals)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   );
 };
