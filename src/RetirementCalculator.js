@@ -158,7 +158,7 @@ const RetirementCalculator = () => {
             <br />
             <div className="input-line">
               {" "}
-              <div className="label">Current Investment</div>
+              <div className="label">Existing Investment Corpus</div>
               <div>
                 <input
                   type="number"
@@ -197,7 +197,9 @@ const RetirementCalculator = () => {
             <br />
             <div className="input-line">
               {" "}
-              <div className="label">Annual Returns on Investment (%)</div>
+              <div className="label">
+                Expected Annual Returns on Investment (%)
+              </div>
               <div>
                 <input
                   type="number"
@@ -208,7 +210,7 @@ const RetirementCalculator = () => {
             </div>
             <br />
             <div className="input-line">
-              <div className="label">Capital Gain Tax</div>
+              <div className="label">Capital Gain Tax (%)</div>
               <div>
                 <input
                   type="number"
@@ -220,7 +222,9 @@ const RetirementCalculator = () => {
             <br />
             <div className="input-line">
               {" "}
-              <div className="label">Post Retirement Income</div>{" "}
+              <div className="label">
+                Desired Post Retirement Monthly Income
+              </div>{" "}
               <div>
                 <input
                   type="number"
@@ -233,7 +237,7 @@ const RetirementCalculator = () => {
             </div>
             <br />
             <div className="input-line">
-              <div className="label">Inflation Rate</div>{" "}
+              <div className="label">Inflation Rate (%)</div>{" "}
               <div>
                 <input
                   type="number"
