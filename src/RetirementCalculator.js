@@ -1,30 +1,20 @@
 import React, { useState, useEffect } from "react";
 import "./RetirementCalculator.scss";
 
-// Calculations for the RetirementCalculator
-// corpus = currentInvestmentCorpus
-// incremental savings during the year = 12*monthlyInvestment
-// monthly investment = (1+annualIncreaseInSavings/100)*monthlyInvestment
-// corpus = corpus + incrementalSavings + returnoninvestment ... before retirement
-// corpus =corpus + returnoninvestment - yearlyWithdrawal
-// return on investment =corpus*growthrate*(1-taxrate/100)
-// yearlyWithdrawal = 12*initialMonthlyPostRetirement
-//                  = Previous withdrawals*(1+inflationRate/100)
-
 const RetirementCalculator = () => {
-  const [currentAge, setCurrentAge] = useState(22);
-  const [retirementAge, setRetirementAge] = useState(50);
-  const [lifeExpectancy, setLifeExpectancy] = useState(85);
-  const [currentInvestmentCorpus, setCurrentInvestmentCorpus] = useState(0);
-  const [monthlyInvestment, setMonthlyInvestment] = useState(8000);
-  const [annualIncreaseInSavings, setAnnualIncreaseInSavings] = useState(5);
-  const [growthRate, setGrowthRate] = useState(12);
-  const [capitalGainTax, setCapitalGainTax] = useState(10);
+  const [currentAge, setCurrentAge] = useState();
+  const [retirementAge, setRetirementAge] = useState();
+  const [lifeExpectancy, setLifeExpectancy] = useState();
+  const [currentInvestmentCorpus, setCurrentInvestmentCorpus] = useState();
+  const [monthlyInvestment, setMonthlyInvestment] = useState();
+  const [annualIncreaseInSavings, setAnnualIncreaseInSavings] = useState();
+  const [growthRate, setGrowthRate] = useState();
+  const [capitalGainTax, setCapitalGainTax] = useState();
   const [postRetirementMonthlyIncome, setPostRetirementMonthlyIncome] =
-    useState(100000);
-  const [inflationRate, setInflationRate] = useState(8);
+    useState();
+  const [inflationRate, setInflationRate] = useState();
   const [simulationData, setSimulationData] = useState([]);
-  const [tableHidden, setTableHidden] = useState(true);
+  const [tableHidden, setTableHidden] = useState();
 
   useEffect(() => {
     // This function will run on component mount and whenever dependencies change
@@ -121,7 +111,7 @@ const RetirementCalculator = () => {
   return (
     <div className="calculator">
       <div className="heading-section">
-        <h3>Retirement Calculator</h3>
+        <h3>Retirement Savings Calculator</h3>
       </div>
       <div className="body">
         <div className="input-section">
