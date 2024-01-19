@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./RetirementCalculator.scss";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const RetirementCalculator = () => {
   const [currentAge, setCurrentAge] = useState();
@@ -23,6 +25,16 @@ const RetirementCalculator = () => {
     setTableHidden(true);
   }, []);
 
+  const notNumber = (number) => {
+    if (
+      isNaN(number) ||
+      number === null ||
+      number === undefined ||
+      number === ""
+    ) {
+      return true;
+    }
+  };
   const calculateRetirement = () => {
     // Validate input values
     if (
@@ -37,10 +49,43 @@ const RetirementCalculator = () => {
       postRetirementMonthlyIncome < 0 ||
       inflationRate < 0
     ) {
-      alert("Please enter valid positive numbers.");
+      toast.error("Please enter valid positive numbers.", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: "Bounce",
+      });
+      return;
+    } else if (
+      notNumber(currentAge) ||
+      notNumber(retirementAge) ||
+      notNumber(lifeExpectancy) ||
+      notNumber(currentInvestmentCorpus) ||
+      notNumber(monthlyInvestment) ||
+      notNumber(annualIncreaseInSavings) ||
+      notNumber(growthRate) ||
+      notNumber(capitalGainTax) ||
+      notNumber(postRetirementMonthlyIncome) ||
+      notNumber(inflationRate)
+    ) {
+      toast.error("Please enter all values", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: "Bounce",
+      });
       return;
     }
-
     // Clear previous simulation data
     setSimulationData([]);
 
@@ -113,6 +158,8 @@ const RetirementCalculator = () => {
       <div className="heading-section">
         <h3>Retirement Savings Calculator</h3>
       </div>
+      <ToastContainer />
+
       <div className="body">
         <div className="input-section">
           <div className="inputs">
@@ -120,6 +167,7 @@ const RetirementCalculator = () => {
               <div className="label">Current Age</div>
               <div>
                 <input
+                  required="true"
                   type="number"
                   value={currentAge}
                   onChange={(e) => setCurrentAge(Number(e.target.value))}
@@ -131,6 +179,7 @@ const RetirementCalculator = () => {
               <div className="label">Retirement Age</div>
               <div>
                 <input
+                  required="true"
                   type="number"
                   value={retirementAge}
                   onChange={(e) => setRetirementAge(Number(e.target.value))}
@@ -142,6 +191,7 @@ const RetirementCalculator = () => {
               <div className="label">Expect to Live Until</div>
               <div>
                 <input
+                  required="true"
                   type="number"
                   value={lifeExpectancy}
                   onChange={(e) => setLifeExpectancy(Number(e.target.value))}
@@ -154,6 +204,7 @@ const RetirementCalculator = () => {
               <div className="label">Existing Investment Corpus</div>
               <div>
                 <input
+                  required="true"
                   type="number"
                   value={currentInvestmentCorpus}
                   onChange={(e) =>
@@ -168,6 +219,7 @@ const RetirementCalculator = () => {
               <div className="label">Monthly Investment</div>
               <div>
                 <input
+                  required="true"
                   type="number"
                   value={monthlyInvestment}
                   onChange={(e) => setMonthlyInvestment(Number(e.target.value))}
@@ -176,9 +228,12 @@ const RetirementCalculator = () => {
             </div>
             <br />
             <div className="input-line">
-              <div className="label">Increase in Savings annually by (%)</div>
+              <div className="label">
+                Expected yearly increase in savings (%)
+              </div>
               <div>
                 <input
+                  required="true"
                   type="number"
                   value={annualIncreaseInSavings}
                   onChange={(e) =>
@@ -191,10 +246,11 @@ const RetirementCalculator = () => {
             <div className="input-line">
               {" "}
               <div className="label">
-                Expected Annual Returns on Investment (%)
+                Anticipated annual growth rate of investments (%)
               </div>
               <div>
                 <input
+                  required="true"
                   type="number"
                   value={growthRate}
                   onChange={(e) => setGrowthRate(Number(e.target.value))}
@@ -203,9 +259,12 @@ const RetirementCalculator = () => {
             </div>
             <br />
             <div className="input-line">
-              <div className="label">Capital Gain Tax (%)</div>
+              <div className="label">
+                Percentage of tax on capital gains (%)
+              </div>
               <div>
                 <input
+                  required="true"
                   type="number"
                   value={capitalGainTax}
                   onChange={(e) => setCapitalGainTax(Number(e.target.value))}
@@ -216,10 +275,11 @@ const RetirementCalculator = () => {
             <div className="input-line">
               {" "}
               <div className="label">
-                Desired Post Retirement Monthly Income
+                Monthly income needed after retirement
               </div>{" "}
               <div>
                 <input
+                  required="true"
                   type="number"
                   value={postRetirementMonthlyIncome}
                   onChange={(e) =>
@@ -230,9 +290,10 @@ const RetirementCalculator = () => {
             </div>
             <br />
             <div className="input-line">
-              <div className="label">Inflation Rate (%)</div>{" "}
+              <div className="label">Expected inflation rate (%)</div>{" "}
               <div>
                 <input
+                  required="true"
                   type="number"
                   value={inflationRate}
                   onChange={(e) => setInflationRate(Number(e.target.value))}
@@ -242,7 +303,9 @@ const RetirementCalculator = () => {
           </div>
           <br />
           <div className="button">
-            <button onClick={calculateRetirement}>Calculate</button>
+            <button type="submit" onClick={calculateRetirement}>
+              Calculate
+            </button>
           </div>
         </div>
 
@@ -266,7 +329,7 @@ const RetirementCalculator = () => {
                     key={data.age}
                     style={{
                       backgroundColor:
-                        data.age == retirementAge
+                        data.age === retirementAge
                           ? "#eef0ff"
                           : data.corpus < -0.0001
                           ? "#fae9e5"
