@@ -234,9 +234,10 @@ footer {
   .input-section {
     box-shadow: 0px 0px 0.5px rgba(0, 0, 0, 0.5);
     margin-top: 0.5rem;
+    margin-bottom: 1.5rem;
     margin-align: auto;
     flex: 1;
-    max-width: 87vw;
+    max-width: 84vw;
     max-height: 60vh;
     overflow: scroll;
     .input-line {
@@ -258,7 +259,7 @@ footer {
     flex: 1;
     box-shadow: 0px 0px 0.5px rgba(0, 0, 0, 0.5);
 
-    max-width: 87vw;
+    max-width: 84vw;
     max-height: 70vh;
     overflow: scroll;
     margin-inline: auto;
