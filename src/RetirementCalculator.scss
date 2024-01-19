@@ -250,7 +250,9 @@ footer {
         margin-bottom: 0.5em;
       }
       input {
-        width: 70vw;
+        width: 60vw;
+        height: 6.5vw;
+        border-radius: 0.7rem;
         text-align: center;
       }
     }
@@ -263,5 +265,15 @@ footer {
     max-height: 70vh;
     overflow: scroll;
     margin-inline: auto;
+    margin-bottom: 3.2rem;
+  }
+  footer {
+    position: fixed;
+    bottom: 0;
+    color: $gray-600;
+    margin-inline: auto;
+    width: 100%; /* Ensure the footer spans the entire width */
+    text-align: center; /* Center the content within the footer */
+    padding: 0.7rem;
   }
 }
