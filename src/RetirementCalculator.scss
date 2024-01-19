@@ -117,17 +117,13 @@ footer {
   }
 }
 
-.table-section {
-  z-index: 10;
-  background-color: rgba(
-    255,
-    255,
-    255,
-    0.95
-  ); /* Very subtle white background */
-  border-radius: 0.4rem;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1); /* Slightly lighter shadow for subtlety */
+/* ... (previous styles) ... */
 
+.table-section {
+  position: relative;
+  z-index: 10;
+  border-radius: 0.4rem;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
   color: $gray-700;
   max-width: 45rem;
   height: 76vh;
@@ -140,26 +136,32 @@ footer {
     max-width: 45rem;
     border-collapse: collapse;
     border-radius: 0.8rem;
-    tr {
-      max-width: 45rem;
-      border-bottom: 0.5px solid $gray-100;
-    }
+
     th,
     td {
       max-width: 45rem;
       padding: 0.8rem;
       text-align: center;
-      color: $gray-600;
+      position: relative;
+      z-index: 1;
     }
+
+    tr {
+      max-width: 45rem;
+      border-bottom: 0.5px solid $gray-100;
+    }
+
     thead {
+      position: -webkit-sticky; /* For Safari */
       position: sticky;
       top: 0;
-      z-index: 20; /* Ensure the header is above the table content */
+      background: #37c589bd; /* Adjusted background color for the header */
+      color: $gray-50;
+      z-index: 2;
     }
+
     th {
       font-weight: 600;
-      background-color: #37c589bd;
-      color: $gray-50;
     }
   }
 }
