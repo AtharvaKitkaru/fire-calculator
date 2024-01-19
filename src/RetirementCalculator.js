@@ -49,17 +49,7 @@ const RetirementCalculator = () => {
       postRetirementMonthlyIncome < 0 ||
       inflationRate < 0
     ) {
-      toast.error("Please enter valid positive numbers.", {
-        position: "top-right",
-        autoClose: 2000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: false,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-        transition: "Bounce",
-      });
+      toast.error("Please enter valid positive numbers.");
       return;
     } else if (
       notNumber(currentAge) ||
@@ -73,17 +63,7 @@ const RetirementCalculator = () => {
       notNumber(postRetirementMonthlyIncome) ||
       notNumber(inflationRate)
     ) {
-      toast.error("Please enter all values", {
-        position: "top-right",
-        autoClose: 2000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: false,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-        transition: "Bounce",
-      });
+      toast.error("Please enter all values");
       return;
     }
     // Clear previous simulation data
@@ -158,18 +138,7 @@ const RetirementCalculator = () => {
       <div className="heading-section">
         <h3>Retirement Savings Calculator</h3>
       </div>
-      <ToastContainer
-        position="top-right"
-        autoClose={2000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick={false}
-        rtl={false}
-        pauseOnFocusLoss={false}
-        draggable
-        pauseOnHover={false}
-        theme="light"
-      ></ToastContainer>
+      <ToastContainer></ToastContainer>
 
       <div className="body">
         <div className="input-section">
