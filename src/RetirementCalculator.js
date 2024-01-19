@@ -51,10 +51,10 @@ const RetirementCalculator = () => {
     ) {
       toast.error("Please enter valid positive numbers.", {
         position: "top-right",
-        autoClose: 5000,
+        autoClose: 2000,
         hideProgressBar: false,
         closeOnClick: true,
-        pauseOnHover: true,
+        pauseOnHover: false,
         draggable: true,
         progress: undefined,
         theme: "light",
@@ -75,7 +75,7 @@ const RetirementCalculator = () => {
     ) {
       toast.error("Please enter all values", {
         position: "top-right",
-        autoClose: 5000,
+        autoClose: 2000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: false,
@@ -158,7 +158,18 @@ const RetirementCalculator = () => {
       <div className="heading-section">
         <h3>Retirement Savings Calculator</h3>
       </div>
-      <ToastContainer />
+      <ToastContainer
+        position="top-right"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick={false}
+        rtl={false}
+        pauseOnFocusLoss={false}
+        draggable
+        pauseOnHover={false}
+        theme="light"
+      ></ToastContainer>
 
       <div className="body">
         <div className="input-section">
