@@ -24,11 +24,13 @@ const RetirementCalculator = () => {
     useState(100000);
   const [inflationRate, setInflationRate] = useState(8);
   const [simulationData, setSimulationData] = useState([]);
+  const [tableHidden, setTableHidden] = useState(true);
 
   useEffect(() => {
     // This function will run on component mount and whenever dependencies change
     // You can put client-side logic here if needed
     // For example, if you need to fetch data from an API on the client side
+    setTableHidden(true);
   }, []);
 
   const calculateRetirement = () => {
@@ -105,6 +107,7 @@ const RetirementCalculator = () => {
 
     // Update state after the loop is complete
     setSimulationData(newData);
+    setTableHidden(false);
   };
   let formatNumber = (val) => {
     if (val >= 10000000 || val <= -10000000)
@@ -254,40 +257,43 @@ const RetirementCalculator = () => {
         </div>
 
         {/* Display the simulation table */}
-        <div className="table-section">
-          <table>
-            <thead>
-              <tr>
-                <th>Age</th>
-                <th>Corpus</th>
-                <th>Increase in yearly Investment</th>
-                <th>Returns on Investment</th>
-                <th>Amount Withdrawn per annum</th>
-              </tr>
-            </thead>
-            <tbody>
-              {simulationData.map((data) => (
-                <tr
-                  key={data.age}
-                  style={{
-                    backgroundColor:
-                      data.age == retirementAge
-                        ? "#eef0ff"
-                        : data.corpus < -0.0001
-                        ? "#fae9e5"
-                        : "white",
-                  }}
-                >
-                  <td>{data.age}</td>
-                  <td>₹ {formatNumber(data.corpus)}</td>
-                  <td>₹ {formatNumber(data.yearlySavingsIncrement)}</td>
-                  <td>₹ {formatNumber(data.returnsOnInvestment)}</td>
-                  <td>₹ {formatNumber(data.withdrawals)}</td>
+
+        {!tableHidden && (
+          <div className="table-section">
+            <table>
+              <thead>
+                <tr>
+                  <th>Age</th>
+                  <th>Corpus</th>
+                  <th>Increase in yearly Investment</th>
+                  <th>Returns on Investment</th>
+                  <th>Amount Withdrawn per annum</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+              </thead>
+              <tbody>
+                {simulationData.map((data) => (
+                  <tr
+                    key={data.age}
+                    style={{
+                      backgroundColor:
+                        data.age == retirementAge
+                          ? "#eef0ff"
+                          : data.corpus < -0.0001
+                          ? "#fae9e5"
+                          : "white",
+                    }}
+                  >
+                    <td>{data.age}</td>
+                    <td>₹ {formatNumber(data.corpus)}</td>
+                    <td>₹ {formatNumber(data.yearlySavingsIncrement)}</td>
+                    <td>₹ {formatNumber(data.returnsOnInvestment)}</td>
+                    <td>₹ {formatNumber(data.withdrawals)}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
       </div>
       <footer>Made with ❤️ by Atharva Kitkaru</footer>
     </div>

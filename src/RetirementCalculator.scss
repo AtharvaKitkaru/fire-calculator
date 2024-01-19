@@ -1,34 +1,30 @@
 @import "variables.scss";
 body {
-  background-color: $gray-50; /* Light gray background */
   padding: 0;
-  background-image: linear-gradient(
-    to right top,
-    #3498db,
-    #2ecc71
-  ); /* Gradient from blue to green */
 }
 footer {
+  position: fixed;
+  bottom: 0;
   color: $gray-600;
   margin-inline: auto;
+  width: 100%; /* Ensure the footer spans the entire width */
+  text-align: center; /* Center the content within the footer */
+  padding: 0.7rem;
 }
 .heading-section {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-size: medium;
-  font-weight: bold;
-  color: $gray-800;
+  font-weight: bolder;
+  color: $white;
 }
 .calculator {
-  background-color: rgba(
-    255,
-    255,
-    255,
-    0.95
-  ); /* Very subtle white background */
+  background-color: #ffffff;
+  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%2369E0AF" fill-opacity="1" d="M0,224L80,202.7C160,181,320,139,480,122.7C640,107,800,117,960,112C1120,107,1280,85,1360,74.7L1440,64L1440,0L1360,0C1280,0,1120,0,960,0C800,0,640,0,480,0C320,0,160,0,80,0L0,0Z"></path></svg>');
+  background-attachment: fixed;
+  background-size: cover; /* Very subtle white background */
   border-radius: 0.5rem;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
   width: 100vw;
-  height: 97vh;
+  height: 96vh;
   border: 0;
   font-family: "Noto Sans", sans-serif;
   font-size: small;
@@ -45,8 +41,9 @@ footer {
   flex-direction: row;
 }
 .input-section {
+  z-index: 10;
   background-color: $white;
-  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
   border-radius: 0.5rem;
   padding: 1rem 1rem;
   margin-top: 1rem;
@@ -55,6 +52,7 @@ footer {
   align-items: start;
   flex: 0.6;
   max-height: 70vh;
+  min-width: 30vw;
   position: relative;
 
   .inputs {
@@ -68,7 +66,7 @@ footer {
     position: fixed absolute;
     margin-inline: auto;
     button {
-      background-color: $green-500;
+      background-color: #37c589bd;
       color: $white;
       border: none;
       border-radius: 0.25rem;
@@ -120,6 +118,7 @@ footer {
 }
 
 .table-section {
+  z-index: 10;
   background-color: rgba(
     255,
     255,
@@ -155,12 +154,12 @@ footer {
     thead {
       position: sticky;
       top: 0;
-      z-index: 1; /* Ensure the header is above the table content */
+      z-index: 20; /* Ensure the header is above the table content */
     }
     th {
       font-weight: 600;
-      background-color: $green-100;
-      color: $gray-800;
+      background-color: #37c589bd;
+      color: $gray-50;
     }
   }
 }
@@ -213,10 +212,11 @@ footer {
 @media only screen and (max-width: 767px) {
   /* Your mobile-specific styles go here */
   .calculator {
+    width: 100vw;
+    height: auto;
     justify-content: center;
     align-items: center;
     // font-size: smaller;
-
     padding: 0rem;
   }
   .heading-section {
