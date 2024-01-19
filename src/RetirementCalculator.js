@@ -176,7 +176,7 @@ const RetirementCalculator = () => {
             </div>
             <br />
             <div className="input-line">
-              <div className="label">Increase in Savings (%)</div>
+              <div className="label">Increase in Savings annually by (%)</div>
               <div>
                 <input
                   type="number"
